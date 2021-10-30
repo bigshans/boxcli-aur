@@ -1,0 +1,5 @@
+pkg
+src
+boxcli
+*.zst
+*.zip
