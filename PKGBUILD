@@ -1,7 +1,7 @@
 # Maintainer: bigshans <me+aur at bigshans dot com>
 # Contributor: Christian Sarazin <archlinux at offlinehoster dot de>
 pkgname=boxcli-git
-pkgver=3.6.0
+pkgver=v3.6.0.r8.gd94ab35
 pkgrel=1
 epoch=1
 arch=('any')
@@ -16,6 +16,14 @@ install=
 source=("git+https://www.github.com/box/boxcli")
 md5sums=('SKIP')
 
+pkgver() {
+  cd "${pkgname%*-git}"
+  ( set -o pipefail
+    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
+}
+
 build() {
 	cd "$srcdir"/boxcli 
     npm install
@@ -23,9 +31,10 @@ build() {
 }
 
 package() {
-    cd "$srcdir"/boxcli/dist/box-v${pkgver}
+    cd "$srcdir"/boxcli/dist/box-v*
     install -d "$pkgdir"/usr/lib
     install -d "$pkgdir"/usr/bin
-    tar xvf box-v${pkgver}.tar.gz --directory "$pkgdir"/usr/lib
+	rm box-v*-linux-x64.tar.gz
+    tar xvf box-v*.tar.gz --directory "$pkgdir"/usr/lib
     ln -sf /usr/lib/box/bin/box "$pkgdir"/usr/bin/box
 }
