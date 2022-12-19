@@ -1,14 +1,15 @@
-# Maintainer: Zach Zundel <me+aur at zachzundel dot com>
+# Maintainer: bigshans <me+aur at bigshans dot com>
 # Contributor: Christian Sarazin <archlinux at offlinehoster dot de>
 pkgname=boxcli-git
-pkgver=2.9.0
+pkgver=3.6.0
 pkgrel=1
 epoch=1
 arch=('any')
 pkgdesc="The CLI for Box.com"
 url="https://box.com"
 license=('Apache')
-makedepends=('git' 'nodejs>=8.0.0' 'npm')
+makedepends=('git' 'npm')
+depends=('nodejs>=8.0.0')
 provides=('box')
 options=()
 install=
@@ -25,6 +26,6 @@ package() {
     cd "$srcdir"/boxcli/dist/box-v${pkgver}
     install -d "$pkgdir"/usr/lib
     install -d "$pkgdir"/usr/bin
-    tar xvf box-v${pkgver}-linux-x64.tar.gz --directory "$pkgdir"/usr/lib
+    tar xvf box-v${pkgver}.tar.gz --directory "$pkgdir"/usr/lib
     ln -sf /usr/lib/box/bin/box "$pkgdir"/usr/bin/box
 }
