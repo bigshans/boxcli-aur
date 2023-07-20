@@ -1,6 +1,6 @@
 pkgbase = boxcli-git
 	pkgdesc = The CLI for Box.com
-	pkgver = v3.8.0.r0.g819c282
+	pkgver = v3.9.1.r0.g507a520
 	pkgrel = 1
 	epoch = 1
 	url = https://box.com

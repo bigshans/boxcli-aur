@@ -1,7 +1,7 @@
 # Maintainer: bigshans <me+aur at bigshans dot com>
 # Contributor: Christian Sarazin <archlinux at offlinehoster dot de>
 pkgname=boxcli-git
-pkgver=v3.9.0.r1.g35d6419
+pkgver=v3.9.1.r0.g507a520
 pkgrel=1
 epoch=1
 arch=('any')
